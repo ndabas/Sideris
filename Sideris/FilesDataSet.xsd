@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="FilesDataSet" targetNamespace="http://tempuri.org/Sideris.xsd" xmlns:mstns="http://tempuri.org/Sideris.xsd" xmlns="http://tempuri.org/Sideris.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" GeneratorTypeConverterClassName="Converter" Modifier="AutoLayout, AnsiClass, NotPublic, Public" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="FilesDataSet" msdata:IsDataSet="true" msdata:EnforceConstraints="False" msprop:User_DataSetName="FilesDataSet" msprop:DSGenerator_DataSetName="FilesDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Shares" msprop:Generator_SuspendValidationVarName="m_suspendValidation" msprop:Generator_SuspendValidationPropName="SuspendValidation" msprop:User_TableName="Shares" msprop:Generator_RowClassName="SharesRow" msprop:Generator_RowEvArgName="SharesRowChangeEvent" msprop:Generator_RowEvHandlerName="SharesRowChangeEventHandler" msprop:Generator_TableClassName="SharesDataTable" msprop:Generator_TableVarName="tableShares" msprop:Generator_TablePropName="Shares">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FullName" msprop:Generator_DelegateName="FullNameChangeEventHandler" msprop:Generator_ChangingEventName="FullNameChanging" msprop:Generator_ColumnVarNameInTable="columnFullName" msprop:Generator_EventArgName="FullNameChangeEventArg" msprop:User_ColumnName="FullName" msprop:Generator_ColumnPropNameInRow="FullName" msprop:Generator_ChangedEventName="FullNameChanged" msprop:Generator_ColumnPropNameInTable="FullNameColumn" type="xs:string" />
+              <xs:element name="Hash" msprop:Generator_DelegateName="HashChangeEventHandler" msprop:Generator_ChangingEventName="HashChanging" msprop:Generator_ColumnVarNameInTable="columnHash" msprop:Generator_EventArgName="HashChangeEventArg" msprop:User_ColumnName="Hash" msprop:Generator_ColumnPropNameInRow="Hash" msprop:Generator_ChangedEventName="HashChanged" msprop:Generator_ColumnPropNameInTable="HashColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="LastModified" msprop:Generator_DelegateName="LastModifiedChangeEventHandler" msprop:Generator_ChangingEventName="LastModifiedChanging" msprop:Generator_ColumnVarNameInTable="columnLastModified" msprop:Generator_EventArgName="LastModifiedChangeEventArg" msprop:User_ColumnName="LastModified" msprop:Generator_ColumnPropNameInRow="LastModified" msprop:Generator_ChangedEventName="LastModifiedChanged" msprop:Generator_ColumnPropNameInTable="LastModifiedColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Size" msprop:Generator_DelegateName="SizeChangeEventHandler" msprop:Generator_ChangingEventName="SizeChanging" msprop:Generator_ColumnVarNameInTable="columnSize" msprop:Generator_EventArgName="SizeChangeEventArg" msprop:User_ColumnName="Size" msprop:Generator_ColumnPropNameInRow="Size" msprop:Generator_ChangedEventName="SizeChanged" msprop:Generator_ColumnPropNameInTable="SizeColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="Keep" msprop:Generator_DelegateName="KeepChangeEventHandler" msprop:Generator_ChangingEventName="KeepChanging" msprop:Generator_ColumnVarNameInTable="columnKeep" msprop:Generator_EventArgName="KeepChangeEventArg" msprop:User_ColumnName="Keep" msprop:Generator_ColumnPropNameInRow="Keep" msprop:Generator_ChangedEventName="KeepChanged" msprop:Generator_ColumnPropNameInTable="KeepColumn" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Downloads" msprop:Generator_SuspendValidationVarName="m_suspendValidation" msprop:Generator_SuspendValidationPropName="SuspendValidation" msprop:User_TableName="Downloads" msprop:Generator_RowClassName="DownloadsRow" msprop:Generator_RowEvArgName="DownloadsRowChangeEvent" msprop:Generator_RowEvHandlerName="DownloadsRowChangeEventHandler" msprop:Generator_TableClassName="DownloadsDataTable" msprop:Generator_TableVarName="tableDownloads" msprop:Generator_TablePropName="Downloads">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FullName" msprop:Generator_DelegateName="FullNameChangeEventHandler" msprop:Generator_ChangingEventName="FullNameChanging" msprop:Generator_ColumnVarNameInTable="columnFullName" msprop:Generator_EventArgName="FullNameChangeEventArg" msprop:User_ColumnName="FullName" msprop:Generator_ColumnPropNameInRow="FullName" msprop:Generator_ChangedEventName="FullNameChanged" msprop:Generator_ColumnPropNameInTable="FullNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Hash" msprop:Generator_DelegateName="HashChangeEventHandler" msprop:Generator_ChangingEventName="HashChanging" msprop:Generator_ColumnVarNameInTable="columnHash" msprop:Generator_EventArgName="HashChangeEventArg" msprop:User_ColumnName="Hash" msprop:Generator_ColumnPropNameInRow="Hash" msprop:Generator_ChangedEventName="HashChanged" msprop:Generator_ColumnPropNameInTable="HashColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Size" msprop:Generator_DelegateName="SizeChangeEventHandler" msprop:Generator_ChangingEventName="SizeChanging" msprop:Generator_ColumnVarNameInTable="columnSize" msprop:Generator_EventArgName="SizeChangeEventArg" msprop:User_ColumnName="Size" msprop:Generator_ColumnPropNameInRow="Size" msprop:Generator_ChangedEventName="SizeChanged" msprop:Generator_ColumnPropNameInTable="SizeColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="FileID" msdata:AutoIncrement="true" msprop:Generator_DelegateName="FileIDChangeEventHandler" msprop:Generator_ChangingEventName="FileIDChanging" msprop:Generator_ColumnVarNameInTable="columnFileID" msprop:Generator_EventArgName="FileIDChangeEventArg" msprop:User_ColumnName="FileID" msprop:Generator_ColumnPropNameInRow="FileID" msprop:Generator_ChangedEventName="FileIDChanged" msprop:Generator_ColumnPropNameInTable="FileIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Offset" msprop:Generator_DelegateName="OffsetChangeEventHandler" msprop:Generator_ChangingEventName="OffsetChanging" msprop:Generator_ColumnVarNameInTable="columnOffset" msprop:Generator_EventArgName="OffsetChangeEventArg" msprop:User_ColumnName="Offset" msprop:Generator_ColumnPropNameInRow="Offset" msprop:Generator_ChangedEventName="OffsetChanged" msprop:Generator_ColumnPropNameInTable="OffsetColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="Status" msprop:Generator_DelegateName="StatusChangeEventHandler" msprop:Generator_ChangingEventName="StatusChanging" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_EventArgName="StatusChangeEventArg" msprop:User_ColumnName="Status" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ChangedEventName="StatusChanged" msprop:Generator_ColumnPropNameInTable="StatusColumn" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="HashKey">
+      <xs:selector xpath=".//mstns:Shares" />
+      <xs:field xpath="mstns:Hash" />
+    </xs:unique>
+    <xs:unique name="NameKey" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Shares" />
+      <xs:field xpath="mstns:FullName" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
