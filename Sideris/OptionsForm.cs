@@ -1,6 +1,4 @@
-﻿#region Using directives
-
-using System;
+﻿using System;
 using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,8 +6,6 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-
-#endregion
 
 namespace Sideris
 {
@@ -22,7 +18,7 @@ namespace Sideris
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            Sideris.Properties.Settings.Value.Save();
+            Sideris.Properties.Settings.Default.Save();
         }
 
         private void sharedFolderTextBox_Validating(object sender, CancelEventArgs e)

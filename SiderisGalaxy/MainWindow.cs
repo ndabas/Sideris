@@ -1,6 +1,4 @@
-﻿#region Using directives
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,32 +9,24 @@ using System.Windows.Forms;
 using System.IO;
 using Sideris.SiderisServer;
 
-#endregion
-
 namespace Sideris.SiderisGalaxy
 {
     partial class MainWindow : Form
     {
         Server server;
-        string virtualDir = "/SiderisServer";
+        string virtualDir = "/SiderisStellar";
         string physicalDir;
 
         public MainWindow()
         {
             InitializeComponent();
-
-
-            panel1.BackColor = ProfessionalColors.ToolStripGradientEnd;
-            panel2.BackColor = ProfessionalColors.ToolStripGradientEnd;
-
-            physicalDir = Application.ExecutablePath;
-            physicalDir = physicalDir.Substring(0, physicalDir.LastIndexOf('\\'));
-            physicalDir += "\\SiderisServer";
+            
+            physicalDir = Directory.GetParent(Path.GetDirectoryName(Application.ExecutablePath)).FullName;
         }
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            if(!Directory.Exists(physicalDir))
+            if(!File.Exists(Path.Combine(physicalDir, "SiderisService.asmx")))
             {
                 MessageBox.Show("The Sideris Server files are missing.",
                     Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -53,7 +43,7 @@ namespace Sideris.SiderisGalaxy
 
             statusLabel.Text = "Started";
             startButton.Enabled = false;
-            portNumericUpDown.ReadOnly = true;
+            portNumericUpDown.Enabled = false;
             stopButton.Enabled = true;
         }
 
@@ -66,20 +56,8 @@ namespace Sideris.SiderisGalaxy
 
             statusLabel.Text = "Stopped";
             startButton.Enabled = true;
-            portNumericUpDown.ReadOnly = false;
+            portNumericUpDown.Enabled = true;
             stopButton.Enabled = false;
-        }
-
-
-        protected override void OnPaintBackground(PaintEventArgs pevent)
-        {
-            Rectangle rect = pevent.ClipRectangle;
-            LinearGradientBrush brush = new LinearGradientBrush(rect,
-                ProfessionalColors.MenuStripGradientBegin,
-                ProfessionalColors.MenuStripGradientEnd,
-                0.0f);
-
-            pevent.Graphics.FillRectangle(brush, rect);
         }
 
     }

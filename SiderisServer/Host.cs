@@ -38,8 +38,8 @@ namespace Sideris.SiderisServer
         private WaitCallback _onSocketAccept;
         private EventHandler _onAppDomainUnload;
 
-        private IRequestProcessor requestHandler;
-        public IRequestProcessor RequestHandler
+        private IHttpWorkerRequestHandler requestHandler;
+        public IHttpWorkerRequestHandler RequestHandler
         {
             get { return requestHandler; }
         }
@@ -49,7 +49,7 @@ namespace Sideris.SiderisServer
             return null; // never expire lease
         }
 
-        public void Configure(Server server, int port, String virtualPath, String physicalPath, String installPath, IRequestProcessor handler)
+        public void Configure(Server server, int port, String virtualPath, String physicalPath, String installPath, IHttpWorkerRequestHandler handler)
         {
             _server = server;
             requestHandler = handler;

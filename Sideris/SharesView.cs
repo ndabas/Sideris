@@ -14,18 +14,20 @@ namespace Sideris
 {
     public partial class SharesView : UserControl
     {
-        public SharesView()
+        private FilesDataSet.SharesDataTable shares;
+
+        public SharesView(FilesDataSet files)
         {
             InitializeComponent();
+
+            this.shares = files.Shares;
         }
 
-        public delegate void UpdateViewInvoker(FilesDataSet.SharesDataTable shares);
-
-        public void UpdateView(FilesDataSet.SharesDataTable shares)
+        public void UpdateView()
         {
             if(listView.InvokeRequired)
             {
-                listView.Invoke(new UpdateViewInvoker(this.UpdateView), shares);
+                listView.Invoke(new MethodInvoker(this.UpdateView));
                 return;
             }
 

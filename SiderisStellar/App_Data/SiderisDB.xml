@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<SiderisDB xmlns="http://tempuri.org/SiderisDB.xsd">
+  <Peer PeerID="2" Address="10.19.141.20:8080" Expires="2005-02-04T02:45:48.6718750+05:30">
+    <Name>Sideris</Name>
+  </Peer>
+  <File PeerID="2" Hash="3B7F12C0BB74F1AAF45089F737DA2048AD676E3B" Size="2441216">
+    <Name>dotnetfx.exe</Name>
+  </File>
+  <File PeerID="2" Hash="56DDF887A66CEE59A9E36E4A7C63686A4BE464FA" Size="25205200">
+    <Name>dotnetfx.exe</Name>
+  </File>
+  <File PeerID="2" Hash="DCB5082C7C2562FC74E6BFDBAD2A7529883D2EF9" Size="26">
+    <Name>stinger1.opt</Name>
+  </File>
+  <File PeerID="2" Hash="ED37113A494CFB691CBE98B049A2C4BAA5887A08" Size="952839">
+    <Name>stinger1.exe</Name>
+  </File>
+</SiderisDB>

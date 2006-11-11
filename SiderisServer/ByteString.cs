@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Sideris.SiderisServer
 {
-    internal class ByteString : MarshalByRefObject
+    internal class ByteString
     {
         private byte[] _bytes;
         private int _offset;

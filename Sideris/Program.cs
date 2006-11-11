@@ -17,7 +17,6 @@ namespace Sideris
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.EnableRTLMirroring();
             Application.Run(new MainWindow());
         }
     }

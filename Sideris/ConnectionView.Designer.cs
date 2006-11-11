@@ -30,30 +30,31 @@
             this.logRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-// 
-// logRichTextBox
-// 
-            this.logRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            // 
+            // logRichTextBox
+            // 
+            this.logRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.logRichTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.logRichTextBox.Location = new System.Drawing.Point(4, 25);
             this.logRichTextBox.Name = "logRichTextBox";
             this.logRichTextBox.ReadOnly = true;
             this.logRichTextBox.Size = new System.Drawing.Size(327, 219);
             this.logRichTextBox.TabIndex = 1;
-            this.logRichTextBox.Text = Sideris.Properties.Settings.Value.SharedFolder;
-// 
-// label1
-// 
+            this.logRichTextBox.Text = global::Sideris.Properties.Settings.Default.SharedFolder;
+            // 
+            // label1
+            // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(4, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 14);
+            this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Connection Log";
-// 
-// ConnectionView
-// 
+            // 
+            // ConnectionView
+            // 
             this.Controls.Add(this.label1);
             this.Controls.Add(this.logRichTextBox);
             this.Name = "ConnectionView";

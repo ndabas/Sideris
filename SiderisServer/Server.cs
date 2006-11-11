@@ -23,9 +23,9 @@ namespace Sideris.SiderisServer
         private WaitCallback _restartCallback;
 
         private Host _host;
-        private IRequestProcessor _handler;
+        private IHttpWorkerRequestHandler _handler;
 
-        public Server(int port, String virtualPath, String physicalPath, IRequestProcessor handler)
+        public Server(int port, String virtualPath, String physicalPath, IHttpWorkerRequestHandler handler)
         {
             _port = port;
             _virtualPath = virtualPath;
@@ -86,7 +86,14 @@ namespace Sideris.SiderisServer
 
         private void CreateHost()
         {
-            _host = (Host) ApplicationHost.CreateApplicationHost(typeof(Host), _virtualPath, _physicalPath);
+            if(_handler == null)
+            {
+                _host = (Host) ApplicationHost.CreateApplicationHost(typeof(Host), _virtualPath, _physicalPath);
+            }
+            else
+            {
+                _host = new Host();
+            }
             _host.Configure(this, _port, _virtualPath, _physicalPath, _installPath, _handler);
         }
 

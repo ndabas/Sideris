@@ -114,4 +114,122 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cancel.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Chat.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Connect0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Contact0.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Connect1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Contact1.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Connect2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Contact2.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Connect3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Contact3.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Connect4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Contact4.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ConnectDo.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ConnectDo.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ConnectDo.png.4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ConnectDo.png.4.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ConnectDrop.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ConnectDrop.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ConnectDrop.png.4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ConnectDrop.png.4.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ConnectedHighHigh.png.0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ConnectedHighHigh.png.0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Copy.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Copy.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Delete.png.2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Delete.png.2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FileInfo.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FileInfo.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FileOpen.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FileOpen.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FilePriority.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FilePriority.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FileRename.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FileRename.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FolderOpen.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FolderOpen.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Folders.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Folders.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Global.png.2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Global.png.2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Info.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Info.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pause.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pause.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Preferences.png.0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Preferences.png.0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Preferences.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Preferences.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Preview.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Preview.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Priority.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Priority.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Search.png.5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Search.png.5.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SearchResults.png.2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SearchResults.png.2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Security.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Security.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SharedFiles.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SharedFiles.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SharedFiles.png.2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SharedFiles.png.2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SpeedMin.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpeedMin.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Start.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Start.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Stop.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Stop.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tools.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tools.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Transfer.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Transfer.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Web.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Web.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wizzard.png.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Wizzard.png.1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

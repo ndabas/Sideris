@@ -14,7 +14,7 @@ using Sideris.SiderisServer;
 
 namespace Sideris
 {
-    public class PeerRequestHandler : Component, IRequestProcessor
+    public class PeerRequestHandler : Component, IHttpWorkerRequestHandler
     {
         private Server server;
         private FilesDataSet.SharesDataTable shares;
@@ -38,7 +38,7 @@ namespace Sideris
         public void StartServer(FilesDataSet.SharesDataTable shares)
         {
             this.shares = shares;
-            this.port = Sideris.Properties.Settings.Value.Port;
+            this.port = (int)Sideris.Properties.Settings.Default.Port;
 
             ThreadPool.QueueUserWorkItem(new WaitCallback(this.Start));
         }
@@ -59,12 +59,35 @@ namespace Sideris
             OnStarted(new EventArgs());
         }
 
+        private void SendFile(HttpWorkerRequest wr, string file, string name, long offset, long length)
+        {
+            int status = offset == 0 ? 200 : 206;
+            string content = String.Format("attachment; filename={0}", name);
+            string range = String.Format("bytes {0}-{1}/{2}",
+                offset, offset + length - 1, offset + length);
+
+            wr.SendStatus(status, HttpWorkerRequest.GetStatusDescription(status));
+
+            wr.SendUnknownResponseHeader("Accept-Ranges", "bytes");
+            wr.SendUnknownResponseHeader("Content-Type", "application/octet-stream");
+            wr.SendUnknownResponseHeader("Content-Disposition", content);
+            if(offset != 0)
+            {
+                wr.SendUnknownResponseHeader("Content-Range", range);
+            }
+
+            wr.SendCalculatedContentLength((int) length);
+            wr.SendResponseFromFile(file, offset, length);
+            wr.FlushResponse(true);
+            wr.EndOfRequest();
+        }
+
         #region IHttpWorkerRequestHandler Members
 
-        void IRequestProcessor.ProcessRequest(RequestProxy proxy)
+        void IHttpWorkerRequestHandler.ProcessRequest(HttpWorkerRequest wr)
         {
-            HttpWorkerRequest wr = proxy.HttpWorkerRequest;
             string hash = wr.GetUriPath();
+            
             if(hash.StartsWith("/"))
             {
                 hash = hash.Substring(1);
@@ -90,7 +113,8 @@ namespace Sideris
                 {
                     int rangeStart = range.IndexOf("bytes=");
                     int rangeEnd = range.IndexOf('-');
-                    if(rangeStart != -1 && rangeEnd != -1)
+                    if(rangeStart != -1 && rangeEnd != -1
+                        && rangeEnd - rangeStart > 1)
                     {
                         rangeStart += 6;
                         offset = Int64.Parse(range.Substring(
@@ -114,28 +138,5 @@ namespace Sideris
         }
 
         #endregion
-
-        private void SendFile(HttpWorkerRequest wr, string file, string name, long offset, long length)
-        {
-            int status = offset == 0 ? 200 : 206;
-            string content = String.Format("attachment; filename={0}", name);
-            string range = String.Format("bytes {0}-{1}/{2}",
-                offset, offset + length - 1, offset + length);
-
-            wr.SendStatus(status, HttpWorkerRequest.GetStatusDescription(status));
-
-            wr.SendUnknownResponseHeader("Accept-Ranges", "bytes");
-            wr.SendUnknownResponseHeader("Content-Type", "application/octet-stream");
-            wr.SendUnknownResponseHeader("Content-Disposition", content);
-            if(offset != 0)
-            {
-                wr.SendUnknownResponseHeader("Content-Range", range);
-            }
-
-            wr.SendCalculatedContentLength((int) length);
-            wr.SendResponseFromFile(file, offset, length);
-            wr.FlushResponse(true);
-            wr.EndOfRequest();
-        }
     }
 }

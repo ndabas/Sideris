@@ -14,7 +14,7 @@ using System.Globalization;
 
 namespace Sideris.SiderisServer
 {
-    internal class Connection : MarshalByRefObject
+    internal class Connection
     {
         private Host _host;
         private Socket _socket;
@@ -51,14 +51,6 @@ namespace Sideris.SiderisServer
                     return endPoint.Address.ToString();
                 else
                     return "127.0.0.1";
-            }
-        }
-
-        public bool IsLocal
-        {
-            get
-            {
-                return (LocalIP == RemoteIP);
             }
         }
 

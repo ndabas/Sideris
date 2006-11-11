@@ -1,0 +1,57 @@
+<xs:schema id="SiderisDataSet" targetNamespace="http://tempuri.org/SiderisDataSet.xsd" xmlns:mstns="http://tempuri.org/SiderisDataSet.xsd" xmlns="http://tempuri.org/SiderisDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified" msdata:schemafragmentcount="2">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SiderisDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="SiderisDataSet" msprop:Generator_DataSetName="SiderisDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Peer" msprop:Generator_UserTableName="Peer" msprop:Generator_RowDeletedName="PeerRowDeleted" msprop:Generator_TableClassName="PeerDataTable" msprop:Generator_RowChangedName="PeerRowChanged" msprop:Generator_RowClassName="PeerRow" msprop:Generator_RowChangingName="PeerRowChanging" msprop:Generator_RowEvArgName="PeerRowChangeEvent" msprop:Generator_RowEvHandlerName="PeerRowChangeEventHandler" msprop:Generator_TablePropName="Peer" msprop:Generator_TableVarName="tablePeer" msprop:Generator_RowDeletingName="PeerRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" msdata:Ordinal="3" />
+            </xs:sequence>
+            <xs:attribute name="PeerID" form="unqualified" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="PeerID" msprop:Generator_ColumnPropNameInRow="PeerID" msprop:Generator_ColumnVarNameInTable="columnPeerID" msprop:Generator_ColumnPropNameInTable="PeerIDColumn" type="xs:long" use="required" />
+            <xs:attribute name="Address" form="unqualified" msprop:Generator_UserColumnName="Address" msprop:Generator_ColumnPropNameInRow="Address" msprop:Generator_ColumnVarNameInTable="columnAddress" msprop:Generator_ColumnPropNameInTable="AddressColumn" type="xs:string" use="required" />
+            <xs:attribute name="Expires" form="unqualified" msprop:Generator_UserColumnName="Expires" msprop:Generator_ColumnPropNameInRow="Expires" msprop:Generator_ColumnVarNameInTable="columnExpires" msprop:Generator_ColumnPropNameInTable="ExpiresColumn" type="xs:dateTime" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="File" msprop:Generator_UserTableName="File" msprop:Generator_RowDeletedName="FileRowDeleted" msprop:Generator_TableClassName="FileDataTable" msprop:Generator_RowChangedName="FileRowChanged" msprop:Generator_RowClassName="FileRow" msprop:Generator_RowChangingName="FileRowChanging" msprop:Generator_RowEvArgName="FileRowChangeEvent" msprop:Generator_RowEvHandlerName="FileRowChangeEventHandler" msprop:Generator_TablePropName="File" msprop:Generator_TableVarName="tableFile" msprop:Generator_RowDeletingName="FileRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" msdata:Ordinal="3" />
+            </xs:sequence>
+            <xs:attribute name="PeerID" form="unqualified" msprop:Generator_UserColumnName="PeerID" msprop:Generator_ColumnPropNameInRow="PeerID" msprop:Generator_ColumnVarNameInTable="columnPeerID" msprop:Generator_ColumnPropNameInTable="PeerIDColumn" type="xs:long" use="required" />
+            <xs:attribute name="Hash" form="unqualified" msprop:Generator_UserColumnName="Hash" msprop:Generator_ColumnPropNameInRow="Hash" msprop:Generator_ColumnVarNameInTable="columnHash" msprop:Generator_ColumnPropNameInTable="HashColumn" type="xs:string" use="required" />
+            <xs:attribute name="Size" form="unqualified" msprop:Generator_UserColumnName="Size" msprop:Generator_ColumnPropNameInRow="Size" msprop:Generator_ColumnVarNameInTable="columnSize" msprop:Generator_ColumnPropNameInTable="SizeColumn" type="xs:long" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Peers">
+      <xs:selector xpath=".//mstns:Peer" />
+      <xs:field xpath="@PeerID" />
+    </xs:unique>
+    <xs:unique name="Address" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Peer" />
+      <xs:field xpath="@Address" />
+    </xs:unique>
+    <xs:unique name="Files" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:File" />
+      <xs:field xpath="@PeerID" />
+      <xs:field xpath="@Hash" />
+    </xs:unique>
+    <xs:keyref name="PeerFiles" refer="Peers" msprop:rel_Generator_UserRelationName="PeerFiles" msprop:rel_Generator_RelationVarName="relationPeerFiles" msprop:rel_Generator_UserChildTable="File" msprop:rel_Generator_UserParentTable="Peer" msprop:rel_Generator_ParentPropName="PeerRow" msprop:rel_Generator_ChildPropName="GetFileRows" msdata:AcceptRejectRule="Cascade">
+      <xs:selector xpath=".//mstns:File" />
+      <xs:field xpath="@PeerID" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

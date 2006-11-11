@@ -13,11 +13,12 @@ using System.IO;
 namespace Sideris
 {
     public class Downloader : Component
-    {
+    {   
+        
         public class Download
         {
             private Downloader downloader;
-            private FilesDataSet.DownloadsRow row;
+            internal FilesDataSet.DownloadsRow row;
             
             private FileStream file;
             private Stream responseStream;
@@ -30,6 +31,12 @@ namespace Sideris
             private Timer timer;
 
             private bool startPending;
+            private bool running;
+
+            public bool IsRunning
+            {
+                get { return running; }
+            }
 
             public string FullName
             {
@@ -57,7 +64,8 @@ namespace Sideris
                 this.service = new ServiceClient();
                 this.row = row;
                 this.startPending = false;
-                
+                this.running = false;
+
                 this.timer = new Timer();
                 this.timer.Enabled = false;
                 this.timer.Interval = 60 * 1000;
@@ -69,6 +77,11 @@ namespace Sideris
 
             public void Start()
             {
+                if(running)
+                {
+                    return;
+                }
+
                 if(hosts == null || hosts.Count == 0)
                 {
                     startPending = true;
@@ -76,7 +89,19 @@ namespace Sideris
                     return;
                 }
 
-                file = new FileStream(row.FullName, FileMode.Append);
+                try
+                {
+                    file = new FileStream(row.FullName, FileMode.OpenOrCreate, FileAccess.Write);
+                }
+                catch
+                {
+                    return;
+                }
+
+                if(row.Offset != file.Length)
+                {
+                    row.Offset = 0;
+                }
                 file.Seek(row.Offset, SeekOrigin.Begin);
 
                 string uriFormat = "http://{0}/{1}";
@@ -92,10 +117,11 @@ namespace Sideris
                     }
                     request.BeginGetResponse(
                         new AsyncCallback(this.BeginRead), null);
+                    running = true;
                 }
                 catch(WebException)
                 {
-
+                    Stop();
                 }
             }
 
@@ -164,6 +190,8 @@ namespace Sideris
 
             public void Stop()
             {
+                running = false;
+
                 if(request != null)
                 {
                     request.Abort();
@@ -175,6 +203,7 @@ namespace Sideris
                 if(file != null)
                 {
                     file.Close();
+                    file = null;
                 }
                 timer.Stop();
                 row.AcceptChanges();
@@ -214,10 +243,21 @@ namespace Sideris
             {
                 Stop();
             }
+
+            public void Cancel()
+            {
+                Stop();
+
+                lock(row)
+                {
+                    row.Delete();
+                    row.AcceptChanges();
+                }
+            }
         }
 
-        public Collection<Download> downloads;
-        public Collection<Download> Downloads
+        public List<Download> downloads;
+        public List<Download> Downloads
         {
             get { return downloads; }
         }
@@ -263,7 +303,7 @@ namespace Sideris
 
         public Downloader()
         {
-            downloads = new Collection<Download>();
+            downloads = new List<Download>();
         }
 
         private FilesDataSet files;
@@ -272,11 +312,16 @@ namespace Sideris
             get { return files; }
             set
             {
-                files = value;
-
-                foreach(FilesDataSet.DownloadsRow row in files.Downloads.Rows)
+                if(value != null)
                 {
-                    downloads.Add(new Download(this, row, null));
+                    files = value;
+                    files.Downloads.DownloadsRowDeleted += new FilesDataSet.DownloadsRowChangeEventHandler(Downloads_DownloadsRowDeleted);
+
+                    downloads.Clear();
+                    foreach(FilesDataSet.DownloadsRow row in files.Downloads.Rows)
+                    {
+                        downloads.Add(new Download(this, row, null));
+                    }
                 }
             }
         }
@@ -290,6 +335,18 @@ namespace Sideris
             Download download = new Download(this, row, hosts);
             downloads.Add(download);
             download.Start();
+        }
+
+        void Downloads_DownloadsRowDeleted(object sender, FilesDataSet.DownloadsRowChangeEvent e)
+        {
+            foreach(Download download in downloads)
+            {
+                if(download.row == e.Row)
+                {
+                    downloads.Remove(download);
+                    break;
+                }
+            }
         }
     }
 }

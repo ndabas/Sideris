@@ -24,6 +24,17 @@ namespace Sideris
 
         public void Search(string text)
         {
+            if(text == null)
+            {
+                return;
+            }
+
+            text = text.Trim();
+            if(text.Length == 0)
+            {
+                return;
+            }
+
             SearchTab tab = new SearchTab(text);
             TabPage page = new TabPage(text);
 

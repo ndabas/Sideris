@@ -152,7 +152,7 @@ namespace Sideris
                 return;
             }
 
-            string path = Properties.Settings.Value.DownloadsFolder;
+            string path = Properties.Settings.Default.DownloadsFolder;
             saveFileDialog.InitialDirectory = path;
             bool added = false;
 

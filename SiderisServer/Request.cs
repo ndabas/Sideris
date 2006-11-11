@@ -14,7 +14,7 @@ using System.Globalization;
 namespace Sideris.SiderisServer
 {
     [Serializable]
-    internal class Request : SimpleWorkerRequest
+    internal class Request : HttpWorkerRequest
     {
         private Host _host;
         private Connection _conn;
@@ -55,7 +55,7 @@ namespace Sideris.SiderisServer
         private bool _specialCaseStaticFileHeaders;
 
 
-        public Request(Host host, Connection conn) : base(String.Empty, String.Empty, null)
+        public Request(Host host, Connection conn)
         {
             _host = host;
             _conn = conn;
@@ -118,7 +118,7 @@ namespace Sideris.SiderisServer
 
             if(_host.RequestHandler != null)
             {
-                _host.RequestHandler.ProcessRequest(new RequestProxy(this));
+                _host.RequestHandler.ProcessRequest(this);
             }
             else
             {

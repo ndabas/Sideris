@@ -29,7 +29,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.listView = new System.Windows.Forms.ListView();
-            this.fullNameColumnHeader = new System.Windows.Forms.ColumnHeader(Sideris.Properties.Settings.Value.SharedFolder);
+            this.fullNameColumnHeader = new System.Windows.Forms.ColumnHeader(Sideris.Properties.Settings.Default.SharedFolder);
             this.SuspendLayout();
 // 
 // label1

@@ -1,8 +1,6 @@
 <?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)" GeneratedClassNamespace="Sideris.Properties" GeneratedClassName="Settings">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Sideris.Properties" GeneratedClassName="Settings">
+  <Profiles />
   <Settings>
     <Setting Name="DiscoveryServer" Type="System.String" Scope="User">
       <Value Profile="(Default)">yoda:13060</Value>
@@ -16,14 +14,17 @@
     <Setting Name="AutoConnect" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="Port" Type="System.UInt16" Scope="User">
-      <Value Profile="(Default)">8080</Value>
-    </Setting>
     <Setting Name="ComputerName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Sideris</Value>
     </Setting>
     <Setting Name="DownloadsFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Downloads</Value>
+    </Setting>
+    <Setting Name="Sideris_SiderisService_SiderisService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:1498/SiderisStellar/SiderisService.asmx</Value>
+    </Setting>
+    <Setting Name="Port" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">8080</Value>
     </Setting>
   </Settings>
 </SettingsFile>

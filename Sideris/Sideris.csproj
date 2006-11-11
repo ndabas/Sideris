@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.40607</ProductVersion>
+    <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9AFD5B0C-E568-4B93-A8AF-8B83CA279FCA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -48,6 +48,11 @@
     <Compile Include="PeerRequestHandler.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="SearchTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -77,29 +82,45 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConnectionView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ConnectionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderScanner.resx">
+      <DependentUpon>FolderScanner.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="OptionsForm.resx">
       <DependentUpon>OptionsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceClient.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ServiceClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransfersView.resx">
+      <DependentUpon>TransfersView.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.cs</LastGenOutput>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Settings.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
     <Compile Include="SearchView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -129,24 +150,19 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:13060/SiderisServer/SiderisService.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\SiderisService\</RelPath>
-    </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\SiderisService\SiderisService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\SiderisService\SiderisService.wsdl" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="FilesDataSet.xsc">
       <DependentUpon>FilesDataSet.xsd</DependentUpon>
     </None>
     <None Include="FilesDataSet.xss">
       <DependentUpon>FilesDataSet.xsd</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FilesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FilesDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web References\SiderisService\File.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -154,12 +170,47 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="FilesDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>FilesDataSet.Designer.cs</LastGenOutput>
-    </Content>
+    <None Include="Web References\SiderisService\SiderisService.disco" />
+    <None Include="Resources\Chat.png.1.png" />
+    <None Include="Resources\ConnectDo.png.1.png" />
+    <None Include="Resources\ConnectDrop.png.1.png" />
+    <None Include="Resources\Web.png.1.png" />
+    <None Include="Resources\Transfer.png.1.png" />
+    <None Include="Resources\Tools.png.1.png" />
+    <None Include="Resources\Stop.png.1.png" />
+    <None Include="Resources\Start.png.1.png" />
+    <None Include="Resources\SpeedMin.png.1.png" />
+    <None Include="Resources\SharedFiles.png.2.png" />
+    <None Include="Resources\SharedFiles.png.1.png" />
+    <None Include="Resources\Security.png.1.png" />
+    <None Include="Resources\SearchResults.png.2.png" />
+    <None Include="Resources\Search.png.5.png" />
+    <None Include="Resources\Priority.png.1.png" />
+    <None Include="Resources\Preview.png.1.png" />
+    <None Include="Resources\Preferences.png.1.png" />
+    <None Include="Resources\Preferences.png.0.png" />
+    <None Include="Resources\Pause.png.1.png" />
+    <None Include="Resources\Info.png.1.png" />
+    <None Include="Resources\Global.png.2.png" />
+    <None Include="Resources\Folders.png.1.png" />
+    <None Include="Resources\FolderOpen.png.1.png" />
+    <None Include="Resources\FileRename.png.1.png" />
+    <None Include="Resources\FilePriority.png.1.png" />
+    <None Include="Resources\FileOpen.png.1.png" />
+    <None Include="Resources\FileInfo.png.1.png" />
+    <None Include="Resources\Delete.png.2.png" />
+    <None Include="Resources\Copy.png.1.png" />
+    <None Include="Resources\Contact4.png.1.png" />
+    <None Include="Resources\Contact3.png.1.png" />
+    <None Include="Resources\Contact2.png.1.png" />
+    <None Include="Resources\Contact1.png.1.png" />
+    <None Include="Resources\Contact0.png.1.png" />
+    <None Include="Resources\ConnectedHighHigh.png.0.png" />
+    <None Include="Resources\ConnectDrop.png.4.png" />
+    <None Include="Resources\ConnectDo.png.4.png" />
+    <None Include="Resources\Cancel.png" />
+    <None Include="Resources\Wizzard.png.1.png" />
+    <None Include="Web References\SiderisService\SiderisService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SiderisServer\SiderisServer.csproj">
@@ -168,5 +219,22 @@
       <Name>SiderisServer</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:1498/SiderisStellar/SiderisService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\SiderisService\</RelPath>
+      <UpdateFromURL>http://localhost:1498/SiderisStellar/SiderisService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Sideris_SiderisService_SiderisService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+  <PropertyGroup Condition="">
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

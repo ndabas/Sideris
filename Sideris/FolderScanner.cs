@@ -59,6 +59,16 @@ namespace Sideris
             }
         }
 
+        public event EventHandler ScanComplete;
+
+        protected virtual void OnScanComplete(EventArgs e)
+        {
+            if(ScanComplete != null)
+            {
+                ScanComplete(this, e);
+            }
+        }
+
         private FilesDataSet files;
 
         public FilesDataSet Files
@@ -82,10 +92,10 @@ namespace Sideris
             string sharedFolder;
             bool subfolders;
 
-            lock(Properties.Settings.Value)
+            lock(Properties.Settings.Default)
             {
-                sharedFolder = Properties.Settings.Value.SharedFolder;
-                subfolders = Properties.Settings.Value.IncludeSubfolders;
+                sharedFolder = Properties.Settings.Default.SharedFolder;
+                subfolders = Properties.Settings.Default.IncludeSubfolders;
             }
 
             // If the share directory does not exist, silently get out.
@@ -114,6 +124,8 @@ namespace Sideris
             }
 
             shares.AcceptChanges();
+
+            OnScanComplete(new EventArgs());
         }
 
         /// <summary>
@@ -229,6 +241,11 @@ namespace Sideris
                 chars[i * 2 + 1] = hexDigits[b & 0xF];
             }
             return new string(chars);
+        }
+
+        private void InitializeComponent()
+        {
+
         }
     }
 }

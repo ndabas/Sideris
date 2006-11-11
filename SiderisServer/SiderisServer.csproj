@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.40607</ProductVersion>
+    <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5E40434C-5A54-4BAD-B16E-2888C09AF3E3}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -36,11 +36,13 @@
     <Compile Include="ByteString.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Host.cs" />
+    <Compile Include="IHttpWorkerRequestHandler.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.cs">
       <AutoGen>True</AutoGen>
@@ -57,7 +59,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Request.cs" />
-    <Compile Include="RequestProxy.cs" />
     <Compile Include="Server.cs" />
     <AppDesigner Include="Properties\" />
   </ItemGroup>

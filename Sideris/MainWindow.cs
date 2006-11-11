@@ -1,6 +1,4 @@
-﻿#region Using directives
-
-using System;
+﻿using System;
 using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,8 +7,6 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Text;
 using System.Windows.Forms;
-
-#endregion
 
 namespace Sideris
 {
@@ -54,18 +50,19 @@ namespace Sideris
             (connectionView.Control as ConnectionView).ClearLog();
         }
 
-        private delegate void SetStatusInvoker(string message);
+        private delegate void SetStatusInvoker(string message, Image icon);
 
-        private void SetStatus(string status)
+        private void SetStatus(string status, Image icon)
         {
-            if(statusStrip.InvokeRequired)
+            if (statusStrip.InvokeRequired)
             {
                 statusStrip.Invoke(new SetStatusInvoker(this.SetStatus),
-                    status);
+                    status, icon);
             }
             else
             {
-                mainStatusStripPanel.Text = status;
+                toolStripStatusLabel.Text = status;
+                toolStripStatusLabel.Image = icon;
             }
         }
 
@@ -97,7 +94,7 @@ namespace Sideris
         internal void SelectView(View view)
         {
             // Flip out the old view.
-            if(activeView != null)
+            if (activeView != null)
             {
                 activeView.Button.Checked = false;
                 activeView.MenuItem.Checked = false;
@@ -119,10 +116,10 @@ namespace Sideris
             siderisFiles = new FilesDataSet();
             service.Files = siderisFiles;
             folderScanner.Files = siderisFiles;
-            
+
             // Load file data if we had saved it.
             datafile = Application.LocalUserAppDataPath + "\\Files.xml";
-            if(File.Exists(datafile))
+            if (File.Exists(datafile))
             {
                 siderisFiles.Shares.BeginLoadData();
                 siderisFiles.Downloads.BeginLoadData();
@@ -142,7 +139,7 @@ namespace Sideris
                 searchesToolStripButton, searchesToolStripMenuItem);
 
             // The shares view
-            sharesView = new View(new SharesView(),
+            sharesView = new View(new SharesView(siderisFiles),
                 sharesToolStripButton, sharesToolStripMenuItem);
 
             transfersView = new View(new TransfersView(siderisFiles),
@@ -150,14 +147,14 @@ namespace Sideris
 
             (searchView.Control as SearchView).transfersView =
                 transfersView.Control as TransfersView;
-            
+
             // Select the connection view on app startup.
             SelectView(connectionView);
             ClearConnectionLog();
             AppendToConnectionLog("Welcome to Sideris!", Color.Blue);
 
             // Auto-connect if neccessary
-            if(Sideris.Properties.Settings.Value.AutoConnect)
+            if (Sideris.Properties.Settings.Default.AutoConnect)
             {
                 service.Register();
             }
@@ -175,10 +172,10 @@ namespace Sideris
             OptionsForm optionsForm = new OptionsForm();
             DialogResult result = optionsForm.ShowDialog();
 
-            if(result == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 // Save the settings.
-                Sideris.Properties.Settings.Value.Save();
+                Sideris.Properties.Settings.Default.Save();
 
                 // Refresh our hashes.
                 folderScanner.Scan();
@@ -193,78 +190,86 @@ namespace Sideris
 
         private void serviceClient_StateChanged(object sender, ServiceClient.RegistrationStateChangedEventArgs e)
         {
-            if(e.State == ServiceClient.RegistrationState.Registered)
+            if (e.State == ServiceClient.RegistrationState.Registered)
             {
                 string message = String.Format("Connected to {0}.",
-                    Sideris.Properties.Settings.Value.DiscoveryServer);
+                    Sideris.Properties.Settings.Default.DiscoveryServer);
                 AppendToConnectionLog(message, Color.Blue);
-                SetStatus("Connected");
+                SetStatus("Connected", Properties.Resources.Connect0);
             }
             else
             {
                 AppendToConnectionLog("Not connected.", Color.Red);
-                SetStatus("Not Connected");
+                SetStatus("Not Connected", Properties.Resources.Connect4);
             }
+        }
+
+        private void folderScanner_ScanComplete(object sender, EventArgs e)
+        {
+            (sharesView.Control as SharesView).UpdateView();
         }
 
         private void folderScanner_FileUpdated(object sender, FolderScanner.FileUpdatedEventArgs e)
         {
             string messageFormat = "";
             string name = e.FileInfo.Name;
-            
-            switch(e.Action)
+
+            switch (e.Action)
             {
-            case FolderScanner.Action.Added:
-                messageFormat = "File added: {0}";
-                break;
-            case FolderScanner.Action.DuplicateIgnored:
-            case FolderScanner.Action.DuplicateDeleted:
-                messageFormat = "Duplicate file ignored: {0}";
-                break;
-            case FolderScanner.Action.HashUpdated:
-                messageFormat = "Hash updated for: {0}";
-                break;
+                case FolderScanner.Action.Added:
+                    messageFormat = "File added: {0}";
+                    break;
+                case FolderScanner.Action.DuplicateIgnored:
+                case FolderScanner.Action.DuplicateDeleted:
+                    messageFormat = "Duplicate file ignored: {0}";
+                    break;
+                case FolderScanner.Action.HashUpdated:
+                    messageFormat = "Hash updated for: {0}";
+                    break;
+            }
+            (transfersView.Control as TransfersView).UpdateView();
+
+
+            AppendToConnectionLog(String.Format(messageFormat, name));
         }
 
+        private void connectionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SelectView(connectionView);
+        }
 
-        AppendToConnectionLog(String.Format(messageFormat, name));
-    }
+        private void searchesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SelectView(searchView);
+        }
 
-    private void connectionToolStripMenuItem1_Click(object sender, EventArgs e)
-    {
-        SelectView(connectionView);
-    }
+        private void connectionToolStripButton_Click(object sender, EventArgs e)
+        {
+            SelectView(connectionView);
+        }
 
-    private void searchesToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        SelectView(searchView);
-    }
-
-    private void connectionToolStripButton_Click(object sender, EventArgs e)
-    {
-        SelectView(connectionView);
-    }
-
-    private void searchesToolStripButton_Click(object sender, EventArgs e)
-    {
-        SelectView(searchView);
-    }
+        private void searchesToolStripButton_Click(object sender, EventArgs e)
+        {
+            SelectView(searchView);
+        }
 
         private void sharesToolStripButton_Click(object sender, EventArgs e)
         {
             SelectView(sharesView);
-            (sharesView.Control as SharesView).UpdateView(siderisFiles.Shares);
+            (sharesView.Control as SharesView).UpdateView();
+            folderScanner.Scan();
         }
 
         private void sharesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SelectView(sharesView);
-            (sharesView.Control as SharesView).UpdateView(siderisFiles.Shares);
+            (sharesView.Control as SharesView).UpdateView();
+            folderScanner.Scan();
         }
 
         private void peerRequestHandler_Started(object sender, EventArgs e)
         {
-            int port = Sideris.Properties.Settings.Value.Port;
+            int port = (ushort)Sideris.Properties.Settings.Default.Port;
             string message = String.Format(
                 "Listening on port {0} for peer requests.", port);
             AppendToConnectionLog(message, Color.Blue);
@@ -284,7 +289,7 @@ namespace Sideris
 
         private void searchToolStripButton1_Click(object sender, EventArgs e)
         {
-            if(activeView != searchView)
+            if (activeView != searchView)
             {
                 SelectView(searchView);
             }
@@ -295,11 +300,21 @@ namespace Sideris
 
         private void searchToolStripTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 searchToolStripButton1_Click(sender, e);
             }
         }
 
-}
+        private void disconnectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            service.Unregister();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+    }
 }

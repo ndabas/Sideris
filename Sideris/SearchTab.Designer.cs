@@ -28,9 +28,9 @@
         private void InitializeComponent()
         {
             this.listView = new System.Windows.Forms.ListView();
-            this.nameColumnHeader = new System.Windows.Forms.ColumnHeader(Sideris.Properties.Settings.Value.SharedFolder);
-            this.sizeColumnHeader = new System.Windows.Forms.ColumnHeader(Sideris.Properties.Settings.Value.SharedFolder);
-            this.peerColumnHeader = new System.Windows.Forms.ColumnHeader(Sideris.Properties.Settings.Value.SharedFolder);
+            this.nameColumnHeader = new System.Windows.Forms.ColumnHeader();
+            this.sizeColumnHeader = new System.Windows.Forms.ColumnHeader();
+            this.peerColumnHeader = new System.Windows.Forms.ColumnHeader();
             this.closeButton = new System.Windows.Forms.Button();
             this.downloadButton = new System.Windows.Forms.Button();
             this.searchResultsLabel = new System.Windows.Forms.Label();
@@ -76,6 +76,7 @@
             this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.closeButton.Location = new System.Drawing.Point(4, 206);
             this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(83, 23);
             this.closeButton.TabIndex = 2;
             this.closeButton.Text = "Close";
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
@@ -83,10 +84,13 @@
 // downloadButton
 // 
             this.downloadButton.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.downloadButton.Location = new System.Drawing.Point(272, 206);
+            this.downloadButton.Image = Sideris.Properties.Resources.FolderOpen_png_1;
+            this.downloadButton.Location = new System.Drawing.Point(264, 206);
             this.downloadButton.Name = "downloadButton";
+            this.downloadButton.Size = new System.Drawing.Size(83, 23);
             this.downloadButton.TabIndex = 3;
             this.downloadButton.Text = "Download";
+            this.downloadButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.downloadButton.Click += new System.EventHandler(this.downloadButton_Click);
 // 
 // searchResultsLabel
